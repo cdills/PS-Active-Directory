@@ -1,0 +1,1 @@
+﻿ search-AdAccount -AccountDisabled -UsersOnly | ?{($_.DistinguishedName -notmatch "OU=\*Disabled Accounts")} | Select Name,DistinguishedName | Out-gridview -outputmode Multiple | Foreach { Move-ADobject -identity $_.DistinguishedName -TargetPath "OU=*Disabled Accounts,DC=Purafilter2000,DC=Com"}
